@@ -58,8 +58,9 @@ min_trip_time = None
 max_trip_time = None
 ```
 
-** Answers to questions above **
-*What time range does your data cover?  How many rows are there total?*
+## Answers to questions above ##
+---
+#### 1) What time range does your data cover?  How many rows are there total?####
 
 The time range that needs to be calculated is: the minimum pickup_datetime and the maximum pickup_datetime value. The code used to calculate these values is as below:
 
@@ -95,7 +96,7 @@ Output:
 ![Output for total row count](/Images/TotalRows.png)
 
 
-*What are the field names?  Give descriptions for each field.*
+#### 2) What are the field names?  Give descriptions for each field.####
 Field names are nothing but headers in the first row from the csv file. This is basically the 0th index.
 
 Output:
@@ -121,7 +122,7 @@ pickup_latitude |Latitude where the meter was engaged
 dropoff_longitude | Longitude where the meter was disengaged
 dropoff_latitude | Latitude where the meter was disengaged
 
-*Give some sample data for each field*
+#### 3) Give some sample data for each field ####
 Sample data was provided using the for loop statement and retriving the first 5 rows for each column.
 ```python
 #print sample data for each field
@@ -149,7 +150,7 @@ Output:
 
 ![Output for sample data](/Images/SampleData.png)
 
-*What MySQL data types would you need to store each of the fields?*
+#### 4) What MySQL data types would you need to store each of the fields? ####
 Based on the descriptions and sample data above, if this data was to be loaded into a MYSQL database, the following data types would be ideal to store each field within the database:
 
 Field Name | Data Type
@@ -169,7 +170,7 @@ pickup_latitude |decimal(18,14)
 dropoff_longitude | decimal(18,14)
 dropoff_latitude |decimal(18,14)
 
-*What is the geographic range of your data (min/max - X/Y)? Plot this (approximately on a map)*
+#### 5) What is the geographic range of your data (min/max - X/Y)? Plot this (approximately on a map)####
 
 Finding minimum and maximum values for pickup longitude, pickup latitude, dropoff longitude and dropoff latitude.
 
@@ -220,6 +221,12 @@ if min_pickup_longitude is None:
 Output:
 
 ![Output for minimum and maximum values of pickup longitude and latitude](/Images/MinMaxPickupLongLat.png)
+
+![Minimum pickup location](/Images/MinPickup)
+![Maximum pickup location](/Images/MaxPickup)
+
+
+
 
 To find minimum and maximum values for trip time in seconds, the following code was implemented:
 ```python
