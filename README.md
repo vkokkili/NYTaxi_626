@@ -225,9 +225,29 @@ Output:
 ![Minimum pickup location](/Images/MinPickup.png)
 ![Maximum pickup location](/Images/MaxPickup.png)
 
+#### 6) What are the distinct values for each field? (If applicable)####
+
+Medallion and Hack_licence will mostly have one occurrance per data. Store_and_fwd_flag has only two values: Y or N. 
+
+Vendor IDs and Rate codes are the other fields which are ideal to find distinct values. Initially I tried using lists which took time to retuen results. See below code which uses lists:
+Output:
+
+![Code using lists to find distinct values](/Images/Lists.png)
 
 
+But later I decided to use 'sets()' which resulted in quicker response. Also note that, if order does not matter, using a set would be easier and faster. If order matters, lists is the preferred way even though it is not quite fast.
 
+```python
+if row[2] not in vendorid:
+            vendorid.add(row[2])
+        if row[3] not in ratecode:
+            ratecode.add(row[3])
+```
+Output:
+
+![Output for distinct values](/Images/DistValues.png)
+
+#### 7) For other numeric types besides lat and lon, what are the min and max values?####
 To find minimum and maximum values for trip time in seconds, the following code was implemented:
 ```python
 if row[8]!='':
@@ -284,5 +304,16 @@ Output:
 ![Output for minimum and maximum values for trip distance](/Images/MinMaxTripDistance.png)
 
 
+#### 9) Create a new CSV file which has only one out of every thousand rows####
+
+In order retrieve only one out of every thousand'th row, we use the modulo operator. If the result is zero, then we write the row to the new csv file (output.csv). In order to do this, we first have to create and open the file in write mode. And then append the data and then close the file.
+```python
+f1 = open('output.csv', 'w')
+f1= open('output.csv','a')
+writer = csv.writer(f1,delimiter=',',lineterminator='\n')
+---
+if n % 1000 == 0:
+        writer.writerow(row)
+```
 
 
