@@ -60,7 +60,7 @@ max_trip_time = None
 
 ## Answers to questions above ##
 ---
-#### 1) What time range does your data cover?  How many rows are there total?####
+#### 1) What time range does your data cover?  How many rows are there total?
 
 The time range that needs to be calculated is: the minimum pickup_datetime and the maximum pickup_datetime value. The code used to calculate these values is as below:
 
@@ -96,7 +96,7 @@ Output:
 ![Output for total row count](/Images/TotalRows.png)
 
 
-#### 2) What are the field names?  Give descriptions for each field.####
+#### 2) What are the field names?  Give descriptions for each field.
 Field names are nothing but headers in the first row from the csv file. This is basically the 0th index.
 
 Output:
@@ -122,7 +122,7 @@ pickup_latitude |Latitude where the meter was engaged
 dropoff_longitude | Longitude where the meter was disengaged
 dropoff_latitude | Latitude where the meter was disengaged
 
-#### 3) Give some sample data for each field ####
+#### 3) Give some sample data for each field 
 Sample data was provided using the for loop statement and retriving the first 5 rows for each column.
 ```python
 #print sample data for each field
@@ -150,7 +150,7 @@ Output:
 
 ![Output for sample data](/Images/SampleData.png)
 
-#### 4) What MySQL data types would you need to store each of the fields? ####
+#### 4) What MySQL data types would you need to store each of the fields? 
 Based on the descriptions and sample data above, if this data was to be loaded into a MYSQL database, the following data types would be ideal to store each field within the database:
 
 Field Name | Data Type
@@ -170,7 +170,7 @@ pickup_latitude |decimal(18,14)
 dropoff_longitude | decimal(18,14)
 dropoff_latitude |decimal(18,14)
 
-#### 5) What is the geographic range of your data (min/max - X/Y)? Plot this (approximately on a map)####
+#### 5) What is the geographic range of your data (min/max - X/Y)? Plot this (approximately on a map)
 
 Finding minimum and maximum values for pickup longitude, pickup latitude, dropoff longitude and dropoff latitude.
 
@@ -225,7 +225,7 @@ Output:
 ![Minimum pickup location](/Images/MinPickup.png)
 ![Maximum pickup location](/Images/MaxPickup.png)
 
-#### 6) What are the distinct values for each field? (If applicable)####
+#### 6) What are the distinct values for each field? (If applicable)
 
 Medallion and Hack_licence will mostly have one occurrance per data. Store_and_fwd_flag has only two values: Y or N. 
 
@@ -246,7 +246,7 @@ Output:
 
 ![Output for distinct values](/Images/DistValues.png)
 
-#### 7) For other numeric types besides lat and lon, what are the min and max values?####
+#### 7) For other numeric types besides lat and lon, what are the min and max values?
 To find minimum and maximum values for trip time in seconds, the following code was implemented:
 ```python
 if row[8]!='':
@@ -302,7 +302,7 @@ Output:
 
 ![Output for minimum and maximum values for trip distance](/Images/MinMaxTripDistance.png)
 
-####8) Create a chart which shows the average number of passengers each hour of the day####
+####8) Create a chart which shows the average number of passengers each hour of the day
 
 We take advantage of the hour object within datetime. The code below generates: Total rides for a given hour and total passenger counts for a given hour. Eg: hour:total
 
@@ -327,7 +327,7 @@ output:
 
 ![Output for passenger and ride counts](/Images/PassengerCount.png)
 
-#### 9) Create a new CSV file which has only one out of every thousand rows####
+#### 9) Create a new CSV file which has only one out of every thousand rows
 
 In order retrieve only one out of every thousand'th row, we use the modulo operator. If the result is zero, then we write the row to the new csv file (output.csv). In order to do this, we first have to create and open the file in write mode. And then append the data and then close the file.
 ```python
@@ -339,4 +339,4 @@ if n % 1000 == 0:
         writer.writerow(row)
 ```
 
-#### 10) Repeat step 8 with the reduced dataset and compare the two charts####
+#### 10) Repeat step 8 with the reduced dataset and compare the two charts
