@@ -9,8 +9,7 @@ In this project we will analyze a dataset which contains information about taxi 
 1. Give some sample data for each field.
 1. What MySQL data types would you need to store each of the fields?
 int(xx), varchar(xx),date,datetime,bool, decimal(m,d)
-1. What is the geographic range of your data (min/max - X/Y)?
-1. Plot this (approximately on a map)
+1. What is the geographic range of your data (min/max - X/Y)? Plot this (approximately on a map)
 1. What are the distinct values for each field? (If applicable)
 1. For other numeric types besides lat and lon, what are the min and max values?
 1. Create a chart which shows the average number of passengers each hour of the day.
@@ -170,7 +169,7 @@ pickup_latitude |decimal(18,14)
 dropoff_longitude | decimal(18,14)
 dropoff_latitude |decimal(18,14)
 
-*What is the geographic range of your data (min/max - X/Y)?*
+*What is the geographic range of your data (min/max - X/Y)? Plot this (approximately on a map)*
 
 Finding minimum and maximum values for pickup longitude, pickup latitude, dropoff longitude and dropoff latitude.
 
@@ -190,13 +189,39 @@ if min_pickup_longitude is None:
 ```
 Output:
 
-![Output for minimum and maximum values of pickup longitude](/Images/MinMaxLongitude.png)
+![Output for minimum and maximum values of pickup longitude](/Images/MinMaxPickupLongitude_Invalid.png)
 
 The valid range of latitude in degrees is -90 and +90 for the southern and northern hemisphere respectively. Longitude is in the range -180 and +180 specifying coordinates west and east of the Prime Meridian, respectively. But the above output makes no sense. So, there are two options for us that needs to be considered:
 1) Data cleanup to make sure the data is within the valid ranges for latitude and longitude
 2) Only find minimum and maximum values within a given range for data analysis
 
 I have chosen to go with option# 2, since data cleanup is assumed out of scope for this assignment and would take longer than expected. Data analysts usually spend months to clean up data.
+
+Given this is NYC data, going to use the NYC (manhattan) limits for latitude and longitude, which would be
+40.8732995,-73.9114409/40.7994684,-74.0229587 (based on google maps)
+
+code with limits checking:
+```python
+if min_pickup_longitude is None:
+            min_pickup_longitude = float(row[10])
+        else:
+            if float(row[10]) >= -74.0229587 and float(row[10])<= -73.9114409:
+                if min_pickup_longitude > float(row[10]):
+                    min_pickup_longitude = float(row[10])
+
+        if max_pickup_longitude is None:
+            max_pickup_longitude = float(row[10])
+        else:
+            if float(row[10]) >= -74.0229587 and float(row[10])<= -73.9114409:
+                if max_pickup_longitude < float(row[10]):
+                    max_pickup_longitude = float(row[10])
+```
+
+Output:
+
+![Output for minimum and maximum values of pickup longitude](/Images/MinMaxPickupLongitude_valid.png)
+
+
 
 
 
