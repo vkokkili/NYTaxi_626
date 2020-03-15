@@ -219,7 +219,10 @@ if min_pickup_longitude is None:
 
 Output:
 
-![Output for minimum and maximum values of pickup longitude](/Images/MinMaxPickupLongitude_valid.png)
+![Output for minimum and maximum values of pickup longitude](/Images/MinMaxPickupLongLat.png)
+
+
+
 
 
 
