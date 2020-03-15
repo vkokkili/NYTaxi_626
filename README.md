@@ -302,6 +302,30 @@ Output:
 
 ![Output for minimum and maximum values for trip distance](/Images/MinMaxTripDistance.png)
 
+####8) Create a chart which shows the average number of passengers each hour of the day####
+
+We take advantage of the hour object within datetime. The code below generates: Total rides for a given hour and total passenger counts for a given hour. Eg: hour:total
+
+```python
+datetime = datetime.strptime(row[5], '%Y-%m-%d %H:%M:%S')
+        time = datetime.hour
+        passenger_count = row[7]
+
+        if time in total_rides.keys():
+            total_rides[time]+=1
+        else:
+            total_rides[time]=1
+
+        if time in total_passenger.keys():
+            pc =  pc + int(passenger_count)
+            total_passenger[time]=pc
+        else:
+            total_passenger[time]=pc
+```
+
+output:
+
+![Output for passenger and ride counts](/Images/PassengerCount.png)
 
 #### 9) Create a new CSV file which has only one out of every thousand rows####
 
@@ -315,3 +339,4 @@ if n % 1000 == 0:
         writer.writerow(row)
 ```
 
+#### 10) Repeat step 8 with the reduced dataset and compare the two charts####
