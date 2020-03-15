@@ -27,3 +27,34 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 %matplotlib inline
 ```
+
+The data file used for this assignment is huge ~2.5GB. To make it faster and efficient, the following method is used to read the file from the disk.
+
+*Creating a file handle to open the csv data file*
+```
+fn= 'trip_data_1.csv'
+f= open(fn,"r")
+reader =  csv.reader(f)
+```
+
+*Initializing variables which will be used to answer the questions above*
+```
+n=0
+x = 0
+min_pickup_time = None
+max_dropoff_time = None
+vendorid, ratecode = set(), set()
+
+min_pickup_longitude = None
+max_pickup_longitude = None
+min_pickup_latitude = None
+max_pickup_latitude = None
+
+min_dropoff_longitude = None
+max_dropoff_longitude = None
+min_dropoff_latitude = None
+max_dropoff_latitude = None
+
+min_trip_time = None
+max_trip_time = None
+```
