@@ -302,7 +302,7 @@ Output:
 
 ![Output for minimum and maximum values for trip distance](/Images/MinMaxTripDistance.png)
 
-####8) Create a chart which shows the average number of passengers each hour of the day
+#### 8) Create a chart which shows the average number of passengers each hour of the day
 
 We take advantage of the hour object within datetime. The code below generates: Total rides for a given hour and total passenger counts for a given hour. Eg: hour:total
 
