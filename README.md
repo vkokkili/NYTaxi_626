@@ -60,7 +60,7 @@ max_trip_time = None
 ```
 
 ** Answers to questions above **
-*What time range does your data cover?  How many rows are there total?
+*What time range does your data cover?  How many rows are there total?*
 
 The time range that needs to be calculated is: the minimum pickup_datetime and the maximum pickup_datetime value. The code used to calculate these values is as below:
 
@@ -96,7 +96,7 @@ Output:
 ![Output for total row count](/Images/TotalRows.png)
 
 
-*What are the field names?  Give descriptions for each field.
+*What are the field names?  Give descriptions for each field.*
 Field names are nothing but headers in the first row from the csv file. This is basically the 0th index.
 
 Output:
@@ -110,7 +110,7 @@ Field Name | Description
 medallion  | A taxi medallion, also known as a CPNC (Certificate of Public Necessity and Convenience), is a transferable permit in the United States allowing a taxicab driver to operate
 hack_license  | A New York City Taxi Drivers License
 vendor_id | A designation for the vendor that provided the record. CMT=Creative Mobile Technologies VTS= VeriFone, Inc. DDS=Digital Dispatch Systems
-rate_code | The final rate code in effect at the end of the trip. 1= Standard rate 2=JFK 3=Newark 4=Nassau or Westchester 5=Negotiated fare 6=Group ride
+rate_code | The final rate code in effect at the end of the trip.
 store_and_fwd_flag | This flag indicates whether the trip record was held in vehicle memory before sending to the vendor, aka “store and forward,” because the vehicle did not have a connection to the server. Y= store and forward trip N= not a store and forward trip
 pickup_datetime |The date and time when the meter was engaged
 dropoff_datetime |The date and time when the meter was disengaged
@@ -121,4 +121,81 @@ pickup_longitude |Longitude where the meter was engaged
 pickup_latitude |Latitude where the meter was engaged
 dropoff_longitude | Longitude where the meter was disengaged
 dropoff_latitude | Latitude where the meter was disengaged
+
+*Give some sample data for each field*
+Sample data was provided using the for loop statement and retriving the first 5 rows for each column.
+```
+#print sample data for each field
+    if n > 0 and n < 6:
+        print("=====Set#",x+1, "====")
+        print("Medallion sample data:", row[0])
+        print("Hack License sample data:", row[1])
+        print("Vendor ID sample data:", row[2])
+        print("Rate Code sample data:", row[3])
+        print("Store and fwd flat sample data:", row[4])
+        print("pickup datetime sample data:", row[5])
+        print("dropoff datetime sample data:", row[6])
+        print("passenger count sample data:", row[7])
+        print("trip time in secs sample data:", row[8])
+        print("trip distance sample data:", row[9])
+        print("pickup longitude sample data:", row[10])
+        print("pickup latitude sample data:", row[11])
+        print("dropoff longitude sample data:", row[12])
+        print("dropoff latitude sample data:", row[13])
+        print(" \n")
+        x+=1
+```
+
+Output:
+
+![Output for sample data](/Images/SampleData.png)
+
+*What MySQL data types would you need to store each of the fields?*
+Based on the descriptions and sample data above, if this data was to be loaded into a MYSQL database, the following data types would be ideal to store each field within the database:
+
+Field Name | Data Type
+------------ | -------------
+medallion  | Varchar(50)
+hack_license  | Varchar(50)
+vendor_id | Varchar(3) not null default ‘0’
+rate_code | Varchar(3) not null default ‘0’
+store_and_fwd_flag | varchar(1) not null default ‘N’
+pickup_datetime | Datetime not null
+dropoff_datetime |Datetime not null
+passenger_count | smallint not null default 0
+trip_time_in_secs| Int not null default 0
+trip_distance | decimal(6,3) not null default 0
+pickup_longitude | decimal(18,14)
+pickup_latitude |decimal(18,14)
+dropoff_longitude | decimal(18,14)
+dropoff_latitude |decimal(18,14)
+
+*What is the geographic range of your data (min/max - X/Y)?*
+
+Finding minimum and maximum values for pickup longitude, pickup latitude, dropoff longitude and dropoff latitude.
+
+Code snippet:
+```
+if min_pickup_longitude is None:
+            min_pickup_longitude = float(row[10])
+        else:
+            if min_pickup_longitude > float(row[10]):
+                min_pickup_longitude = float(row[10])
+
+        if max_pickup_longitude is None:
+            max_pickup_longitude = float(row[10])
+        else:
+            if max_pickup_longitude < float(row[10]):
+                max_pickup_longitude = float(row[10])
+```
+Output:
+
+![Output for minimum and maximum values of pickup longitude](/Images/MinMaxLongitude.png)
+
+The valid range of latitude in degrees is -90 and +90 for the southern and northern hemisphere respectively. Longitude is in the range -180 and +180 specifying coordinates west and east of the Prime Meridian, respectively. But the above output makes no sense. So, there are two options for us that needs to be considered:
+1) Data cleanup to make sure the data is within the valid ranges for latitude and longitude
+2) Only find minimum and maximum values within a given range for data analysis
+I have chosen to go with option# 2, since data cleanup is assumed out of scope for this assignment and would take longer than expected. Data analysts usually spend months to clean up data.
+
+
 
