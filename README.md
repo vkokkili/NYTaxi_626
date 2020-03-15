@@ -304,7 +304,7 @@ Output:
 
 #### 8) Create a chart which shows the average number of passengers each hour of the day
 
-We take advantage of the hour object within datetime. The code below generates: Total rides for a given hour and total passenger counts for a given hour. Eg: hour:total
+We take advantage of the hour object within datetime. The code below generates: Total rides for a given hour and total passenger counts for a given hour. Eg: hour:total. This is similar to the wifi assignment where we did grouping and filtering
 
 ```python
 datetime = datetime.strptime(row[5], '%Y-%m-%d %H:%M:%S')
@@ -326,6 +326,8 @@ datetime = datetime.strptime(row[5], '%Y-%m-%d %H:%M:%S')
 output:
 
 ![Output for passenger and ride counts](/Images/PassengerCount.png)
+
+To display in a chart, we use matplotlib. Where we can pass the key:value pairs as x:y axis.
 
 #### 9) Create a new CSV file which has only one out of every thousand rows
 
