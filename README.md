@@ -230,7 +230,6 @@ Output:
 Medallion and Hack_licence will mostly have one occurrance per data. Store_and_fwd_flag has only two values: Y or N. 
 
 Vendor IDs and Rate codes are the other fields which are ideal to find distinct values. Initially I tried using lists which took time to retuen results. See below code which uses lists:
-Output:
 
 ![Code using lists to find distinct values](/Images/Lists.png)
 
@@ -315,5 +314,4 @@ writer = csv.writer(f1,delimiter=',',lineterminator='\n')
 if n % 1000 == 0:
         writer.writerow(row)
 ```
-
 
