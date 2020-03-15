@@ -58,3 +58,31 @@ max_dropoff_latitude = None
 min_trip_time = None
 max_trip_time = None
 ```
+
+** Answers to questions above **
+*What time range does your data cover?  How many rows are there total?
+
+The time range that needs to be calculated is: the minimum pickup_datetime and the maximum pickup_datetime value. The code used to calculate these values is as below:
+
+```
+pickuptime = datetime.strptime(row[5], '%Y-%m-%d %H:%M:%S')
+        if min_pickup_time is None:
+            min_pickup_time = pickuptime
+        elif pickuptime < min_pickup_time:
+            min_pickup_time = pickuptime
+
+        # finding highest value of dropoff datetime
+        dropofftime = datetime.strptime(row[6], '%Y-%m-%d %H:%M:%S')
+        if max_dropoff_time is None:
+            max_dropoff_time = dropofftime
+        elif dropofftime > max_dropoff_time:
+            max_dropoff_time = dropofftime
+```
+Output:
+
+![Output for date range](/images/DateRange.png)
+
+
+And to calculate the number of rows in the data file trip_data_1.csv, this was achieved by incrementing the counter 'n' and making sure that the header row in the csv is not calculated.
+
+```
