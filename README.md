@@ -222,8 +222,8 @@ Output:
 
 ![Output for minimum and maximum values of pickup longitude and latitude](/Images/MinMaxPickupLongLat.png)
 
-![Minimum pickup location](/Images/MinPickup)
-![Maximum pickup location](/Images/MaxPickup)
+![Minimum pickup location](/Images/MinPickup.png)
+![Maximum pickup location](/Images/MaxPickup.png)
 
 
 
