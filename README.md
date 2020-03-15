@@ -21,7 +21,7 @@ int(xx), varchar(xx),date,datetime,bool, decimal(m,d)
 **Dataset used: trip_data_1.csv**
 
 *Imports used*
-```
+```python
 import csv, time
 from datetime import datetime
 import matplotlib.pyplot as plt
@@ -31,14 +31,14 @@ import matplotlib.pyplot as plt
 The data file used for this assignment is huge ~2.5GB. To make it faster and efficient, the following method is used to read the file from the disk.
 
 *Creating a file handle to open the csv data file*
-```
+```python
 fn= 'trip_data_1.csv'
 f= open(fn,"r")
 reader =  csv.reader(f)
 ```
 
 *Initializing variables which will be used to answer the questions above*
-```
+```python
 n=0
 x = 0
 min_pickup_time = None
@@ -64,7 +64,7 @@ max_trip_time = None
 
 The time range that needs to be calculated is: the minimum pickup_datetime and the maximum pickup_datetime value. The code used to calculate these values is as below:
 
-```
+```python
 pickuptime = datetime.strptime(row[5], '%Y-%m-%d %H:%M:%S')
         if min_pickup_time is None:
             min_pickup_time = pickuptime
@@ -85,7 +85,7 @@ Output:
 
 And to calculate the number of rows in the data file trip_data_1.csv, this was achieved by incrementing the counter 'n' and making sure that the header row in the csv is not included.
 
-```
+```python
 n = 0
 for row in reader:
     n += 1
@@ -124,7 +124,7 @@ dropoff_latitude | Latitude where the meter was disengaged
 
 *Give some sample data for each field*
 Sample data was provided using the for loop statement and retriving the first 5 rows for each column.
-```
+```python
 #print sample data for each field
     if n > 0 and n < 6:
         print("=====Set#",x+1, "====")
@@ -175,7 +175,7 @@ dropoff_latitude |decimal(18,14)
 Finding minimum and maximum values for pickup longitude, pickup latitude, dropoff longitude and dropoff latitude.
 
 Code snippet:
-```
+```python
 if min_pickup_longitude is None:
             min_pickup_longitude = float(row[10])
         else:
@@ -195,6 +195,7 @@ Output:
 The valid range of latitude in degrees is -90 and +90 for the southern and northern hemisphere respectively. Longitude is in the range -180 and +180 specifying coordinates west and east of the Prime Meridian, respectively. But the above output makes no sense. So, there are two options for us that needs to be considered:
 1) Data cleanup to make sure the data is within the valid ranges for latitude and longitude
 2) Only find minimum and maximum values within a given range for data analysis
+
 I have chosen to go with option# 2, since data cleanup is assumed out of scope for this assignment and would take longer than expected. Data analysts usually spend months to clean up data.
 
 
