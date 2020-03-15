@@ -80,7 +80,7 @@ pickuptime = datetime.strptime(row[5], '%Y-%m-%d %H:%M:%S')
 ```
 Output:
 
-![Output for date range](/images/DateRange.png)
+![Output for date range](/Images/DateRange.png)
 
 
 And to calculate the number of rows in the data file trip_data_1.csv, this was achieved by incrementing the counter 'n' and making sure that the header row in the csv is not calculated.
