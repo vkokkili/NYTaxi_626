@@ -72,18 +72,3 @@ print("Minimum pickup date time:", min_pickup_time)
 # max_dropoff_time
 print("Maximum dropoff date time:", max_dropoff_time)
 f1.close()
-
-'''
-minyr =  None
-maxyr = None
-for row in reader:
-    if n == 1:
-        minyr = row[35]
-        maxyr =  row[35]
-    else:
-        if row[35] > maxyr:
-            maxyr = row[35]
-        if row[35] < minyr:
-            minyr = row[35]
-print(minyr, maxyr)
-'''
