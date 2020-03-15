@@ -83,6 +83,42 @@ Output:
 ![Output for date range](/Images/DateRange.png)
 
 
-And to calculate the number of rows in the data file trip_data_1.csv, this was achieved by incrementing the counter 'n' and making sure that the header row in the csv is not calculated.
+And to calculate the number of rows in the data file trip_data_1.csv, this was achieved by incrementing the counter 'n' and making sure that the header row in the csv is not included.
 
 ```
+n = 0
+for row in reader:
+    n += 1
+print("Total number of rows (without header):", n-1)
+```
+Output:
+
+![Output for total row count](/Images/TotalRows.png)
+
+
+*What are the field names?  Give descriptions for each field.
+Field names are nothing but headers in the first row from the csv file. This is basically the 0th index.
+
+Output:
+
+![Output for field names](/Images/FieldNames.png)
+
+Here are the field descriptions after some research done over the internet:
+
+Field Name | Description
+------------ | -------------
+medallion  | A taxi medallion, also known as a CPNC (Certificate of Public Necessity and Convenience), is a transferable permit in the United States allowing a taxicab driver to operate
+hack_license  | A New York City Taxi Drivers License
+vendor_id | A designation for the vendor that provided the record. CMT=Creative Mobile Technologies VTS= VeriFone, Inc. DDS=Digital Dispatch Systems
+rate_code | The final rate code in effect at the end of the trip. 1= Standard rate 2=JFK 3=Newark 4=Nassau or Westchester 5=Negotiated fare 6=Group ride
+store_and_fwd_flag | This flag indicates whether the trip record was held in vehicle memory before sending to the vendor, aka “store and forward,” because the vehicle did not have a connection to the server. Y= store and forward trip N= not a store and forward trip
+pickup_datetime |The date and time when the meter was engaged
+dropoff_datetime |The date and time when the meter was disengaged
+passenger_count |The number of passengers in the vehicle. This is a driver-entered value
+trip_time_in_secs|Time in seconds taken to complete the trip from pickup to dropoff
+trip_distance |The elapsed trip distance in miles reported by the taximeter
+pickup_longitude |Longitude where the meter was engaged
+pickup_latitude |Latitude where the meter was engaged
+dropoff_longitude | Longitude where the meter was disengaged
+dropoff_latitude | Latitude where the meter was disengaged
+
