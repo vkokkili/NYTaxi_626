@@ -16,3 +16,14 @@ int(xx), varchar(xx),date,datetime,bool, decimal(m,d)
 1. Create a chart which shows the average number of passengers each hour of the day.
 1. Create a new CSV file which has only one out of every thousand rows.
 1. Repeat step 8 with the reduced dataset and compare the two charts.
+
+
+**Dataset used: trip_data_1.csv**
+
+*Imports used*
+```
+import csv, time
+from datetime import datetime
+import matplotlib.pyplot as plt
+%matplotlib inline
+```
