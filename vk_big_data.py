@@ -1,6 +1,8 @@
 import csv, time
 from datetime import datetime
 
+start = time.time()
+
 fn= 'trip_data_1.csv'
 f= open(fn,"r") #create a file handle to open csv
 reader =  csv.reader(f)
@@ -72,3 +74,5 @@ print("Minimum pickup date time:", min_pickup_time)
 # max_dropoff_time
 print("Maximum dropoff date time:", max_dropoff_time)
 f1.close()
+
+print("Time taken to execute this script:", time.time()-start)
