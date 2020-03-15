@@ -219,11 +219,62 @@ if min_pickup_longitude is None:
 
 Output:
 
-![Output for minimum and maximum values of pickup longitude](/Images/MinMaxPickupLongLat.png)
+![Output for minimum and maximum values of pickup longitude and latitude](/Images/MinMaxPickupLongLat.png)
+
+To find minimum and maximum values for trip time in seconds, the following code was implemented:
+```python
+if row[8]!='':
+            if min_trip_time is None:
+                min_trip_time = float(row[8])
+            else:
+                if min_trip_time > float(row[8]):
+                    min_trip_time = float(row[8])
+
+            if max_trip_time is None:
+                max_trip_time = float(row[8])
+            else:
+                if max_trip_time < float(row[8]):
+                    max_trip_time = float(row[8])
+```
 
 
+Output:
 
+![Output for minimum and maximum values for trip time in secs](/Images/MinMaxTripTime_Invalid.png)
 
+You will notice that the minimum trip time is 0.0. Which again does not make sense or says that the trip did not happen, which should not be considered. So, modified the code with the following condition check as shown below to not consider 0.0 values.
+
+```python
+if row[8]!='':
+            if min_trip_time is None and float(row[8]) != 0.0:
+                min_trip_time = float(row[8])
+            else:
+                if min_trip_time > float(row[8]) and float(row[8]) != 0.0:
+                    min_trip_time = float(row[8])
+```
+Output:
+
+![Output for minimum and maximum values for trip time in secs](/Images/MinMaxTripTime.png)
+
+Similar to Trip time above, the data file has zero and empty string trip distance values. The following code is used to eliminate those values and find minimum and maximum values for trip distance.
+
+```python
+if min_trip_dist is None and row[9] != '' and float(row[9]) != 0.0:
+            min_trip_dist = float(row[9])
+        else:
+            if min_trip_dist > float(row[9]) and row[9] != '' and float(row[9]) != 0.0:
+                min_trip_dist = float(row[9])
+
+        if max_trip_dist is None and row[9] != '' and float(row[9]) != 0.0:
+            max_trip_dist = float(row[9])
+        else:
+            if max_trip_dist < float(row[9]) and row[9] != '' and float(row[9]) != 0.0:
+                max_trip_dist = float(row[9])
+```
+
+Output:
+
+![Output for minimum and maximum values for trip distance](/Images/MinMaxTripDistance.png)
 
 
 
