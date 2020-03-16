@@ -308,19 +308,19 @@ We take advantage of the hour object within datetime. The code below generates: 
 
 ```python
 datetime = datetime.strptime(row[5], '%Y-%m-%d %H:%M:%S')
-        time = datetime.hour
+        htime = datetime.hour
         passenger_count = row[7]
 
-        if time in total_rides.keys():
+        if htime in total_rides.keys():
             total_rides[time]+=1
         else:
             total_rides[time]=1
 
-        if time in total_passenger.keys():
+        if htime in total_passenger.keys():
             pc =  pc + int(passenger_count)
-            total_passenger[time]=pc
+            total_passenger[htime]=pc
         else:
-            total_passenger[time]=pc
+            total_passenger[htime]=pc
 ```
 
 output:
@@ -328,6 +328,9 @@ output:
 ![Output for passenger and ride counts](/Images/PassengerCount.png)
 
 To display in a chart, we use matplotlib. Where we can pass the key:value pairs as x:y axis.
+
+![Output for Total Rides by Hour](/Images/TotalRidesByHour.png)
+
 
 #### 9) Create a new CSV file which has only one out of every thousand rows
 
