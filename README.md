@@ -344,4 +344,3 @@ if n % 1000 == 0:
         writer.writerow(row)
 ```
 
-#### 10) Repeat step 8 with the reduced dataset and compare the two charts
